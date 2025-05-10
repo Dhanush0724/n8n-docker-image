@@ -1,16 +1,11 @@
-version: "3"
+FROM n8nio/n8n
 
-services:
-  n8n:
-    image: n8nio/n8n
-    restart: always
-    ports:
-      - "5678:5678"
-    environment:
-      - N8N_BASIC_AUTH_ACTIVE=true
-      - N8N_BASIC_AUTH_USER=admin
-      - N8N_BASIC_AUTH_PASSWORD=password
-      - N8N_HOST=localhost
-      - N8N_PORT=5678
-    volumes:
-      - ./n8n_data:/home/node/.n8n
+ENV N8N_BASIC_AUTH_ACTIVE=true
+ENV N8N_BASIC_AUTH_USER=admin
+ENV N8N_BASIC_AUTH_PASSWORD=password
+ENV N8N_HOST=0.0.0.0
+ENV N8N_PORT=5678
+
+EXPOSE 5678
+
+CMD ["n8n"]
